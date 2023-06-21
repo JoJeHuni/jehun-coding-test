@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.*;
 class Solution {
     public long solution(long n) {
         long answer = 0;
