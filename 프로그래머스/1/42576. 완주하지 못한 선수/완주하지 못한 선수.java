@@ -1,18 +1,25 @@
 import java.util.*;
 class Solution {
-    public String solution(String[] participant, String[] completion) {
-        // 1. 두 배열을 정렬한다
-        Arrays.sort(participant);
-        Arrays.sort(completion);
+    public static String solution(String[] participant, String[] completion) {
+        String answer = "";
 
-        // 2. 두 배열이 다를 때까지 찾는다
-        int i = 0;
-        for(i=0;i<completion.length;i++)
-            if(!participant[i].equals(completion[i]))
+        HashMap<String, Integer> map = new HashMap<>();
+	
+        for (String p : participant) {
+            map.put(p, map.getOrDefault(p, 0) + 1);
+        }
+
+        for (String c : completion) {
+            map.put(c, map.get(c) - 1);
+        }
+
+        for (String key : map.keySet()) {
+            if (map.get(key) != 0) {
+                answer = key;
                 break;
+            }
+        }
 
-
-        // 3. 여기까지 왔다는 것은 마지막 주자가 완주하지 못했다는 의미이다.
-        return participant[i];
+        return answer;
     }
 }
