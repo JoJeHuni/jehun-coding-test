@@ -7,4 +7,4 @@ for i in range(L) :
     current = ord(str[i]) - 96
     hash += current * 31 ** i
 
-print(hash)
+print(hash%M)
